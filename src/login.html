@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="customer"  >
+<head>
+    <meta charset="UTF-8">
+    <title>ShoppingShopping</title>
+    <link rel="stylesheet" href="public/web/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="public/web/assets/css/indexcss.css">
+    <link rel="stylesheet" href="public/web/assets/css/logincss.css">
+</head>
+<body>
+    <div class="top-login-btn">
+        <a class="btn btn-default " style="width: 80px;text-align: center;font-size: 16px;" href="/register">登录</a>
+        <a class="btn btn-default" style="width: 80px;text-align: center;font-size: 16px;" href="login.html#/register">注册</a>
+    </div>
+    <div>
+        <ul>
+            <li style="list-style-type:none">
+                <a href="/index.html" class="test" style="text-decoration:none;">主页&nbsp;&nbsp;&nbsp;&nbsp;</a>
+            </li>
+        </ul>
+    </div>
+    <div ng-view></div>
+
+    <script src="public/web/js/lib/angular-1.4.3/angular.js"></script>
+    <script src="public/web/js/lib/angular-1.4.3/angular-route.min.js"></script>
+
+    <script src="public/web/js/service/customer_module.js"></script>
+    <script src="public/web/customer/service/route.js"></script>
+    <script src="public/web/customer/controller/login_controller.js"></script>
+    <script src="public/web/customer/controller/home_controller.js"></script>
+    <script src="public/web/js/service/service.js"></script>
+
+</body>
+</html>
