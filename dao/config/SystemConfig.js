@@ -12,6 +12,7 @@ var mysqlConnectOptions ={
 };
 
 function getMysqlConnectOptions(){
+    console.log("get mysql connect options in systemconfig");
     return mysqlConnectOptions;
 }
 

@@ -22,7 +22,7 @@ app.factory('$Ajax',['$http','$location','$q',function ($http,$location,$q) {
                 $http[fn](url,param).success(function(data){
                     deferred.resolve(data);
                 }).error(function(data){
-                    checkAuthorizedStatus(data);
+                    //checkAuthorizedStatus(data);
                     deferred.reject(data);
                 });
                 return deferred.promise;
@@ -30,12 +30,12 @@ app.factory('$Ajax',['$http','$location','$q',function ($http,$location,$q) {
         })(fnArray[i]);
     }
 
-    function checkAuthorizedStatus(data) {
-        if(!angular.isUndefined(data.outMsg) && data.outMsg=="Access token error ,the Api can't be accessed") {
-            $.cookie(_this.ADMIN_AUTH_NAME,"");
+   // function checkAuthorizedStatus(data) {
+     //   if(!angular.isUndefined(data.outMsg) && data.outMsg=="Access token error ,the Api can't be accessed") {
+          //  $.cookie(_this.ADMIN_AUTH_NAME,"");
           //  window.location.href="admin_login.html";
-        }
-    }
+       // }
+   // }
 
     return _this;
 }]);

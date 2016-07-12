@@ -10,14 +10,14 @@
             </div>
             <div>
                 <label>验证码:</label>
-                <div><input type="text" placeholder="验证码:"></div>
-                <div><input type="button" class="btn" value="获取验证码"></div>
+                <div><input type="text" placeholder="验证码:" ng-model="smsCode"></div>
+                <div><input type="button" class="btn" value="获取验证码" ng-click="getCode()"></div>
 
             </div>
             <div>
                 <label class="col-lg-3">姓名:</label>
                 <div class="col-lg-8">
-                    <input type="text" placeholder="请输入姓名">
+                    <input type="text" placeholder="请输入姓名" ng-model="registerName">
                 </div>
             </div>
             <div>

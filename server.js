@@ -5,6 +5,8 @@ var fs = require('fs');
 var restify = require('restify');
 var path = require('path');
 var login = require('./bl/login.js');
+var sms = require('./bl/Sms.js');
+var customer = require('./bl/Customer.js');
 
 
 function createServer(){
@@ -55,11 +57,10 @@ function createServer(){
         maxAge: 0
     }));
 
-    console.log("11111111111");
 
     server.post({path:'/liling/api/user/do/login', contentType:'application/json'}, login.custLogin);
-    console.log("12222222221");
-    
+    server.post({path:'/liling/api/sms/:email/sign',contentType:'application/json'}, sms.sendSignInSms);
+    server.post({path:'/liling/api/addCustomer',contentType:'application/json'}, customer.addCustomer);
     server.on('NotFound', function (req, res, next) {
         console.log("not found error");
         res.send(404);

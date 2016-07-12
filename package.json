@@ -16,6 +16,8 @@
     "restify-errors": "4.2.0",
     "seq": "0.3.5",
     "serializer": "*",
+    "nodemailer": "0.6.2",
+    "nodemailer-smtp-transport": "2.5.0",
     "urlencode": "*"
   },
   "devDependencies": {

@@ -1,10 +1,10 @@
 /**
  * Created by liling on 6/29/16.
  */
-
+var db = require('./connection/MysqlDb.js');
 
 function queryUser(params, callback){
-    var query = "select * from register when id is not null";
+    var query = "select * from register where id is not null";
     var paramArray=[], i=0;
     if(params.email){
         query = query + " and id = ? "
@@ -25,8 +25,38 @@ function queryUser(params, callback){
     }
     query = query + " order by id desc ";
     db.dbQuery(query, paramArray, function(error, rows){
-       logger.debug('queryUser');
+       console.log('queryUser');
         return callback(error, rows);
     });
 
+}
+
+function addUser(params,callback){
+    var query = " insert into user_info (email, sms,name,password) value (?,?,?,?)";
+    var paramArray=[], i =0;
+    paramArray[i++] = params.email;
+    paramArray[i++] = params.sms;
+    paramArray[i++] = params.name;
+    paramArray[i++] = params.password;
+    db.dbQuery((query, paramArray, function(error,rows){
+        return callback(error, rows);
+    }))
+}
+
+function updateUserLoginDate(params, callback){
+    var query = "update user_info set last_login_on = CURRENT_TIMESTAMP where id =?";
+    var paramArray=[], i = 0;
+    paramArray[i]=params.userId;
+    db.dbQuery(query, paramArray, function(error, rows){
+        console.log('update user login date dao');
+        return callback(error, rows);
+    })
+}
+
+
+module.exports = {
+    queryUser : queryUser,
+    addUser:addUser,
+    updateUserLoginDate:updateUserLoginDate
+    
 }

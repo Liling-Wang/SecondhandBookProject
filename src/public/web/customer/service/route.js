@@ -1,9 +1,7 @@
 /**
  * Created by liling on 6/24/16.
  */
-console.log("in route.js");
 app.config(['$routeProvider',function($routeProvider) {
-    console.log("in route.js2");
     $routeProvider
 
         .when('/register',{
