@@ -55,6 +55,33 @@ app.controller("homeController", ['$rootScope','$scope','$Ajax',
             }
 
         }
+        
+        $scope.onLogin = function(){
+            if($scope.email == null || $scope.email ==''){
+                WarningBox(result.msg);
+            }else if($scope.password == null || $scope.password == ''){
+                WarningBox(result.msg);
+            }else{
+                var params = {
+                    email: $scope.email,
+                    password:$scope.password
+                }
+                $Ajax.post('/user/do/login',params).then(function(result){
+                    if(result.success){
+                        console.log('successful to log in');
+                        $.cookie('userId', result.userId,{path:'/',expires: 30});
+                        $.cookie('userName', $scope.email,{path:'/',expires: 30});
+                        $.cookie('userStatus', result.userStatus,{path:'/',expires: 30});
+                        window.location.href = "";
+                    }else{
+                        console.log('unsuccessful to log in');
+                    }
+                }).catch(function (error) {
+                    console.log('服务器内部错误');
+
+                })
+            }
+        }
 
     }
 

@@ -19,10 +19,10 @@ function queryUser(params, callback){
         query = query + " and name = ? "
         paramArray[i++] = params.name;
     }
-    if(params.password){
-        query = query + " and password = ? "
-        paramArray[i++] = params.password;
-    }
+   // if(params.password){
+       // query = query + " and password = ? "
+       // paramArray[i++] = params.password;
+   // }
     query = query + " order by id desc ";
     db.dbQuery(query, paramArray, function(error, rows){
        console.log('queryUser');
@@ -32,19 +32,20 @@ function queryUser(params, callback){
 }
 
 function addUser(params,callback){
-    var query = " insert into user_info (email, sms,name,password) value (?,?,?,?)";
+    console.log("params",params);
+    var query = " insert into register (email, sms,name,password) values (?,?,?,?)";
     var paramArray=[], i =0;
     paramArray[i++] = params.email;
-    paramArray[i++] = params.sms;
+    paramArray[i++] = params.code;
     paramArray[i++] = params.name;
     paramArray[i++] = params.password;
-    db.dbQuery((query, paramArray, function(error,rows){
+    db.dbQuery(query, paramArray, function(error,rows){
         return callback(error, rows);
-    }))
+    })
 }
 
 function updateUserLoginDate(params, callback){
-    var query = "update user_info set last_login_on = CURRENT_TIMESTAMP where id =?";
+    var query = "update register set last_login_on = CURRENT_TIMESTAMP where id =?";
     var paramArray=[], i = 0;
     paramArray[i]=params.userId;
     db.dbQuery(query, paramArray, function(error, rows){

@@ -11,7 +11,7 @@ app.config(['$routeProvider',function($routeProvider) {
             
         })
         .when('/login',{
-            templateUrl:'./src/login.html',
+            templateUrl:'/public/web/customer/view/loginContent.html',
             controller:'homeController'
         })
         .otherwise({

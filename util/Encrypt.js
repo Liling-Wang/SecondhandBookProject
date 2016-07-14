@@ -2,6 +2,7 @@
  * Created by liling on 7/3/16.
  */
 var crypto = require('crypto');
+var key ="wl".toString('ascii');
 
 function getNumberRandomKey(max, min){
     var Range = max - min;
@@ -15,7 +16,9 @@ function getSmsRandomKey(){
 }
 
 function encryptByMd5(clearText){
-    var md5 = crypto.createHmac('md5',md5Key);
+    //console.log("cleartext", clearText);
+    var md5 = crypto.createHmac('md5',key);
+    //console.log("md5", md5);
     return md5.update(clearText).digest('hex').toUpperCase();
 }
 

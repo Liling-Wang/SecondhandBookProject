@@ -28,13 +28,16 @@ function  addCustomer(req, res, next) {
 
         })
     }).seq(function(){
+        console.log("1");
         var that = this;
         userDao.queryUser(params,function(error, rows){
+            console.log("2");
             if(error){
                 console.log('queryuser error');
                 return next();
             }else{
                 if(rows && rows.length > 0){
+
                     console.log("email had been register");
                     res.send(200, {success:false, error:'query user system error'});
                     return next();
@@ -44,12 +47,17 @@ function  addCustomer(req, res, next) {
             }
         })
     }).seq(function () {
+        console.log("3");
         params.password = encrypt.encryptByMd5(params.password);
+        console.log("",params.password);
         userDao.addUser(params, function(error, result){
+            console.log("4");
             if(error){
                 console.log(' add user error');
             }else{
                 if(result && result.insertId > 0){
+
+                    console.log("result+++++++++++++",result);
                     userDao.updateUserLoginDate({userId:result.insertId},function(error,result){
                         if (error) {
                             logger.error(' createAccessToken  updateUserLoginDate ' + error.message);
