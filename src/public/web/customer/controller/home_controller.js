@@ -72,7 +72,7 @@ app.controller("homeController", ['$rootScope','$scope','$Ajax',
                         $.cookie('userId', result.userId,{path:'/',expires: 30});
                         $.cookie('userName', $scope.email,{path:'/',expires: 30});
                         $.cookie('userStatus', result.userStatus,{path:'/',expires: 30});
-                        window.location.href = "";
+                        window.location.href = "/main.html#/searchPage";
                     }else{
                         console.log('unsuccessful to log in');
                     }

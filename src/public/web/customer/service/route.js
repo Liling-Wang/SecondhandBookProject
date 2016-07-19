@@ -14,8 +14,18 @@ app.config(['$routeProvider',function($routeProvider) {
             templateUrl:'/public/web/customer/view/loginContent.html',
             controller:'homeController'
         })
+
+        .when('/searchPage',{
+        templateUrl: '/public/web/customer/view/searchPage.html',
+        controller:'homeController'
+    })
+        .when('/index',{
+            templateUrl:'/index.html',
+            controller:'homeController'
+        })
+        
         .otherwise({
-           // templateUrl: '/register'
+           // templateUrl: '/public/web/customer/view/searchPage.html'
 
         });
 

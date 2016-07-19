@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="customer" ng-controller="mainController">
+<head>
+    <meta charset="UTF-8">
+    <title>ShoppingShopping</title>
+    <link rel="stylesheet" href="public/web/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="public/web/assets/css/indexcss.css">
+    <link rel="stylesheet" href="public/web/assets/css/logincss.css">
+</head>
+<body >
+<nav>
+    <div class="container">
+        <div class="top-login-btn">
+            <a  ng-click="logOut()" style="width: 80px;text-align: center;font-size: 16px;">&nbsp;&nbsp;&nbsp;{{userName}}&nbsp;&nbsp;&nbsp; 退出&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+        <div class="menu-container" >
+            <a href="/index.html" class="test" style="text-decoration:none;">主页&nbsp;&nbsp;&nbsp;&nbsp;</a>
+            <a style="padding-right: 22px;"> 发表帖子</a>
+        </div>
+
+    </div>
+</nav>
+
+<div ng-view></div>
+
+<script src="public/web/js/lib/angular-1.4.3/angular.js"></script>
+<script src="public/web/js/lib/angular-1.4.3/angular-route.min.js"></script>
+<script src="public/web/js/lib/jquery.min.js"></script>
+<script src="public/web/js/lib/jquery.cookie.min.js"></script>
+
+
+<script src="public/web/js/service/customer_module.js"></script>
+<script src="public/web/customer/service/route.js"></script>
+<script src="public/web/customer/controller/main_controller.js"></script>
+<script src="public/web/customer/controller/home_controller.js"></script>
+<script src="public/web/js/service/service.js"></script>
+<script src="public/web/js/service/global_function.js"></script>
+
+
+</body>
+</html>

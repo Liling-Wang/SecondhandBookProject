@@ -1,0 +1,196 @@
+<div class="content container" style="background-color: white">
+    <div class="rows">
+        <div class="col-md-3 filter-by-block md-margin-bottom-60">
+            <h1>搜索条件</h1>
+            <form>
+                <div class="panel-group" id="accordion">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h2 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                    兴趣
+                                    <i class="fa fa-angle-down"></i>
+                                </a>
+                            </h2>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <ul class="list-unstyled checkbox-list">
+                                    <li ng-repeat="courseType in courseTypeArray">
+                                        <label class="checkbox">
+                                            <input type="checkbox" ng-click="onClickCourseType(courseType.id,courseTypeChk)" ng-model="courseTypeChk">
+                                            <i></i>
+                                            {{courseType.name}}
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/end panel group-->
+
+                <div class="panel-group" id="accordion-v2">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h2 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion-v2" href="#collapseTwo">
+                                    适合人群
+                                    <i class="fa fa-angle-down"></i>
+                                </a>
+                            </h2>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <ul class="list-unstyled checkbox-list">
+                                    <li>
+                                        <label class="checkbox">
+                                            <input type="radio" name="checkbox" ng-click="onAge(1)">
+                                            <i></i>
+                                            6岁以下
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="checkbox">
+                                            <input type="radio" name="checkbox" ng-click="onAge(2)">
+                                            <i></i>
+                                            6-12岁
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="checkbox">
+                                            <input type="radio" name="checkbox" ng-click="onAge(3)">
+                                            <i></i>
+                                            12-18岁
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="checkbox">
+                                            <input type="radio" name="checkbox" ng-click="onAge(4)">
+                                            <i></i>
+                                            18-22岁
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="checkbox">
+                                            <input type="radio" name="checkbox" ng-click="onAge(5)">
+                                            <i></i>
+                                            22岁以上
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/end panel group-->
+
+                <div class="panel-group" id="accordion-v3">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h2 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion-v3" href="#collapseThree">
+                                    价格区间
+                                    <i class="fa fa-angle-down"></i>
+                                </a>
+                            </h2>
+                        </div>
+                        <div id="collapseThree" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <ul class="list-unstyled checkbox-list">
+                                    <li>
+                                        <label class="checkbox">
+                                            <input type="radio" name="moneyCheckbox" ng-click="onMoney(1)">
+                                            <i></i>
+                                            1万元以下
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="checkbox">
+                                            <input type="radio" name="moneyCheckbox" ng-click="onMoney(2)">
+                                            <i></i>
+                                            1-3万
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="checkbox">
+                                            <input type="radio" name="moneyCheckbox" ng-click="onMoney(3)">
+                                            <i></i>
+                                            3-5万
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="checkbox">
+                                            <input type="radio" name="moneyCheckbox" ng-click="onMoney(4)">
+                                            <i></i>
+                                            5万以上
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="checkbox">
+                                            <input type="radio" name="moneyCheckbox" ng-click="onMoney(5)">
+                                            <i></i>
+                                            自定义
+                                        </label>
+                                    </li>
+                                    <div id="customizePrice" style="display: none">
+                                        <input type="text" style="width: 80px" ng-model="cusMinPrice">元&nbsp;- <input type="text" style="width: 80px" ng-model="cusMaxPrice">元
+                                    </div>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <input type="reset" class="btn-u btn-brd btn-brd-hover btn-u-lg btn-u-sea-shop btn-block" ng-click="onReset()"/>
+                <button type="button" class="btn-u btn-brd btn-brd-hover btn-u-lg btn-u-sea-shop btn-block" ng-click="onSearch()">搜索</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- search result-->
+    <div class="col-md-9">
+        <div class="row margin-bottom-5">
+            <div class="col-sm-4 result-category">
+                <h3>搜索结果</h3>
+
+            </div>
+        </div>
+        <div class="filter-results">
+            <div ng-repeat="courseResult in courseResultArray" class="list-product-description product-description-brd margin-bottom-30">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <a href="/main.html#/courseDetail?courseId={{courseResult.id}}">
+                            <img class="img-responsive sm-margin-bottom-20" ng-if="courseResult.img_url==null" ng-src="/images/home-7.jpg">
+                            <img class="img-responsive sm-margin-bottom-20" ng-if="courseResult.img_url!=null" ng-src="/api/image/{{courseResult.img_url}}">
+                        </a>
+                    </div>
+                    <div class="col-sm-8 product-description">
+                        <div class="overflow-h margin-bottom-5">
+                            <ul class="list-inline overflow-h">
+                                <li><h4 class="title-price"><a href="/main.html#/courseDetail?courseId={{courseResult.id}}" style="color: black">{{courseResult.name}}</a></h4></li>
+                            </ul>
+                            <div class="margin-bottom-10">
+                                <span class="title-price margin-right-10" style="color: black">￥{{courseResult.price}}</span>
+                            </div>
+                            <p class="margin-bottom-20" style="color: black">{{courseResult.content}}</p>
+                            <p class="margin-bottom-20">时间:暑假 | 时长:{{courseResult.week_count}}周 | 适用年龄:{{courseResult.age_min}}-{{courseResult.age_max}}岁 | 地点:{{courseResult.region_name}}</p>
+                            <ul class="list-inline add-to-wishlist margin-bottom-20">
+                                <li class="compare-in" id="addCollection{{$index}}"
+                                    ng-click="onFavorite(1,'addCollection'+$index,'cancelCollection'+$index,courseResult.id)">
+                                    <i class="fa fa-heart" style="color: gainsboro"></i>
+                                    <a style="color: black">添加到收藏</a>
+                                </li>
+                                <li class="compare-in" id="cancelCollection{{$index}}" style="display: none"
+                                    ng-click="onFavorite(0,'cancelCollection'+$index,'addCollection'+$index,courseResult.id)">
+                                    <i class="fa fa-heart" style="color: #72c02c"></i>
+                                    <a style="color: black">取消收藏</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

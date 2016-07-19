@@ -7,7 +7,7 @@ function queryUser(params, callback){
     var query = "select * from register where id is not null";
     var paramArray=[], i=0;
     if(params.email){
-        query = query + " and id = ? "
+        query = query + " and email = ? "
         paramArray[i++] = params.email;
     }
     if(params.sms){
