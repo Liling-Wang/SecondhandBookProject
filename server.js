@@ -58,9 +58,9 @@ function createServer(){
     }));
 
 
-    server.post({path:'/liling/api/user/do/login', contentType:'application/json'}, login.custLogin);
-    server.post({path:'/liling/api/sms/:email/sign',contentType:'application/json'}, sms.sendSignInSms);
-    server.post({path:'/liling/api/addCustomer',contentType:'application/json'}, customer.addCustomer);
+    server.post({path:'/lilingw/api/user/do/login', contentType:'application/json'}, login.custLogin);
+    server.post({path:'/lilingw/api/sms/:email/sign',contentType:'application/json'}, sms.sendSignInSms);
+    server.post({path:'/lilingw/api/addCustomer',contentType:'application/json'}, customer.addCustomer);
     server.on('NotFound', function (req, res, next) {
         console.log("not found error");
         res.send(404);

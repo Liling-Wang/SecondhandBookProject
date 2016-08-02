@@ -4,7 +4,7 @@
 app.factory('$Ajax',['$http','$location','$q',function ($http,$location,$q) {
     
     var _this = {};
-    _this.ADMIN_AUTH_NAME = "admin-token";
+   // _this.ADMIN_AUTH_NAME = "admin-token";
     
     _this.setHeader = function(name, value){
         $http.defaults.headers.common[name] =value;
@@ -16,7 +16,7 @@ app.factory('$Ajax',['$http','$location','$q',function ($http,$location,$q) {
     for(var i in fnArray) {
         (function(fn) {
             _this[fn] = function(url,param) {
-                url = 'liling/api' + (url[0]==='/'?'':'/') + url;
+                url = 'lilingw/api' + (url[0]==='/'?'':'/') + url;
                 var deferred = $q.defer();
                 //only 'post,put' need 2nd parameter
                 $http[fn](url,param).success(function(data){

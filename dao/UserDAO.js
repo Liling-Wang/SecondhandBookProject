@@ -4,6 +4,7 @@
 var db = require('./connection/MysqlDb.js');
 
 function queryUser(params, callback){
+    console.log("in query user");
     var query = "select * from register where id is not null";
     var paramArray=[], i=0;
     if(params.email){
@@ -19,10 +20,7 @@ function queryUser(params, callback){
         query = query + " and name = ? "
         paramArray[i++] = params.name;
     }
-   // if(params.password){
-       // query = query + " and password = ? "
-       // paramArray[i++] = params.password;
-   // }
+
     query = query + " order by id desc ";
     db.dbQuery(query, paramArray, function(error, rows){
        console.log('queryUser');

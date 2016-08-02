@@ -57,6 +57,7 @@ app.controller("homeController", ['$rootScope','$scope','$Ajax',
         }
         
         $scope.onLogin = function(){
+
             if($scope.email == null || $scope.email ==''){
                 WarningBox(result.msg);
             }else if($scope.password == null || $scope.password == ''){
@@ -67,6 +68,7 @@ app.controller("homeController", ['$rootScope','$scope','$Ajax',
                     password:$scope.password
                 }
                 $Ajax.post('/user/do/login',params).then(function(result){
+                    console.log("result",result);
                     if(result.success){
                         console.log('successful to log in');
                         $.cookie('userId', result.userId,{path:'/',expires: 30});
@@ -74,9 +76,12 @@ app.controller("homeController", ['$rootScope','$scope','$Ajax',
                         $.cookie('userStatus', result.userStatus,{path:'/',expires: 30});
                         window.location.href = "/main.html#/searchPage";
                     }else{
+                        console.log("result",result);
+                        console.log("result.success",result.success);
                         console.log('unsuccessful to log in');
                     }
                 }).catch(function (error) {
+                    console.log("error", error);
                     console.log('服务器内部错误');
 
                 })
