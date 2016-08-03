@@ -7,6 +7,7 @@ var path = require('path');
 var login = require('./bl/login.js');
 var sms = require('./bl/Sms.js');
 var customer = require('./bl/Customer.js');
+var book = require('./bl/Book.js');
 
 
 function createServer(){
@@ -61,6 +62,11 @@ function createServer(){
     server.post({path:'/lilingw/api/user/do/login', contentType:'application/json'}, login.custLogin);
     server.post({path:'/lilingw/api/sms/:email/sign',contentType:'application/json'}, sms.sendSignInSms);
     server.post({path:'/lilingw/api/addCustomer',contentType:'application/json'}, customer.addCustomer);
+    console.log("in server");
+    //server.get('/lilingw/api/bookType',book.queryBookType);
+    server.post({path:'/lilingw/api/bookType'},book.queryBookType);
+    console.log("in server",book);
+
     server.on('NotFound', function (req, res, next) {
         console.log("not found error");
         res.send(404);

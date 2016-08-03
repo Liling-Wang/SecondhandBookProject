@@ -17,7 +17,7 @@ app.config(['$routeProvider',function($routeProvider) {
 
         .when('/searchPage',{
         templateUrl: '/public/web/customer/view/searchPage.html',
-        controller:'homeController'
+        controller:'mainController'
     })
         .when('/index',{
             templateUrl:'/index.html',
