@@ -1,8 +1,8 @@
 /**
  * Created by liling on 7/15/16.
  */
-app.controller("mainController", ['$rootScope','$scope','$Ajax','$location',
-    function($rootScope,$scope ,$Ajax,$location) {
+app.controller("mainController", ['$rootScope','$scope','$Ajax','$location','$ajax',
+    function($rootScope,$scope ,$Ajax,$location,$ajax) {
         //console.log("in home controller");
         $scope.userName = $.cookie('userName');
         $rootScope.go = function(path) {
@@ -12,10 +12,10 @@ app.controller("mainController", ['$rootScope','$scope','$Ajax','$location',
         $scope.logOut = function(){
             
         }
-console.log('in main controller');
-        $Ajax.post('/bookType').then(function (data) {
+       
+        $ajax.get('/bookType').then(function (data) {
             console.log("data", data);
-            $scope.bookTypeArray = data.result;
+            $scope.bookTypeArray = data.data.result;
             if(data.success){
                 console.log("data.result: ",data.result);
                 $scope.bookTypeArray = data.result;
@@ -23,7 +23,21 @@ console.log('in main controller');
             
         }).catch(function (error) {
             WarningBox('bookType: 服务器内部错误');
-        })
+        });
+
+        $scope.text = {};
+        $scope.sendText = function () {
+            var params = {
+                "subject": $('#subjectSelect').val(),
+                "textTitle": $scope.text.title,
+                "textContent":$scope.text.content
+            }
+
+            console.log("params", params);
+
+        }
+
+
         
 
     }

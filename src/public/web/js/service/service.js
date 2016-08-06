@@ -28,7 +28,7 @@ app.factory('$Ajax',['$http','$location','$q',function ($http,$location,$q) {
                 return deferred.promise;
             };
         })(fnArray[i]);
-    }
+    };
 
    // function checkAuthorizedStatus(data) {
      //   if(!angular.isUndefined(data.outMsg) && data.outMsg=="Access token error ,the Api can't be accessed") {
@@ -38,4 +38,46 @@ app.factory('$Ajax',['$http','$location','$q',function ($http,$location,$q) {
    // }
 
     return _this;
+}]);
+
+app.factory('$ajax',['$http','$location','$q',function ($http,$location,$q) {
+    var $ajax ={};
+    $ajax.setHeader = function(name,value) {
+        $http.defaults.headers.common[name] = value;
+    };
+
+    $ajax.setHeader('Content-Type','application/json');
+    $ajax.get = function(url,success,error) {
+        console.log("in ajax.get");
+        var config = {
+            url: 'lilingw/api' + (url[0]==='/'?'':'/') + url,
+            method:'POST'
+        }
+        
+        console.log("in ajax.get",url);
+        var ajax = $http(config).success(function(data){
+            console.log("in ajax.get 2");
+//            console.log('mp get', data);
+            onSuccess(data,success);
+        }).error(function(data){
+            onError(data,error);
+            console.log("in ajax.get 3");
+        });
+        return ajax;
+    };
+
+    function onSuccess(data,success) {
+        if(!angular.isUndefined(success) && success!=null) {
+            success(data);
+        }
+    }
+
+    function onError(data,error) {
+       // checkAuthorizedStatus(data);
+        if(!angular.isUndefined(error) && error!=null) {
+            error(data);
+        }
+    }
+
+    return $ajax;
 }]);

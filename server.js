@@ -63,7 +63,7 @@ function createServer(){
     server.post({path:'/lilingw/api/sms/:email/sign',contentType:'application/json'}, sms.sendSignInSms);
     server.post({path:'/lilingw/api/addCustomer',contentType:'application/json'}, customer.addCustomer);
     console.log("in server");
-    //server.get('/lilingw/api/bookType',book.queryBookType);
+    server.get('/lilingw/api/bookType',book.queryBookType);
     server.post({path:'/lilingw/api/bookType'},book.queryBookType);
     console.log("in server",book);
 

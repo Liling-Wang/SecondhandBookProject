@@ -1,0 +1,40 @@
+<div  class="post_container" style="margin-top: 20px;" >
+    <div class="row">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#">发表帖子</a></li>
+
+    </ul>
+    </div>
+</div>
+
+<div class="post_container">
+    <div class="row ">
+    <div class="col-xs-2 col-sm-2"  style="padding-left: 0px;margin-top: 20px;padding-right: 5px;">
+         <select class="form-control" id="subjectSelect" >
+             <option >选择分数主题</option>
+             <option value="0">数学</option>
+             <option value="1">生物</option>
+             <option value="2">英语</option>
+             <option value="3">计算机</option>
+             <option value="4">历史</option>
+         </select>
+    </div>
+    <div class="col-xs-4 col-sm-4" style="padding-left: 0px;margin-top: 20px; padding-right: 5px;">
+        <input type="text" class="form-control" ng-model="text.title">
+
+    </div >
+    <div class=" col-xs-6 col-sm-6" style="padding-left: 0px;margin-top: 20px; font-size: medium;">
+        <p style="margin-top: 5px;">还可输入 80 个字符</p>
+    </div>
+        </div>
+        <div class="row ">
+
+    <div class="col-xs-12 col-sm-12" style="padding-left: 0px; top:20px;">
+        <textarea class="textarea form-control" ng-model="text.content" placeholder="Enter text ..." rows="12"></textarea>
+    </div>
+    <div class="col-xs-12 col-sm-12" style="padding-left: 0px;margin-top: 40px;">
+        <button type="button" class="btn btn-primary btn-md" style="background-color: #337ab7" ng-click="sendText()"> 发表帖子</button>
+    </div>
+    </div>
+
+</div>
