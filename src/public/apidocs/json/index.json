@@ -1,0 +1,130 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "The documents for API sample",
+    "version": "1.0.0",
+    "title": "API doc"
+
+  },
+  "host": "localhost:8085",
+  "basePath": "/lilingw/api",
+  "tags": [
+    {
+      "name": "User",
+      "description": "add new user",
+      "externalDocs": {
+        "description": "sinotrans batch",
+        "url": "http://localhost:8085"
+      }
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+
+    "/addCustomer": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "add user",
+        "description": "add user info into mysql",
+        "operationId": "createUserInfo",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "itemArray:{'name':0,\n'sms':0,\n'email':0,\n'password':0}",
+            "required": true,
+            "schema":{
+              "$ref":"#/definitions/addCustomer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/user/do/login":{
+       "post":{
+         "tags":[
+           "User"
+         ],
+         "summary":"login",
+         "description":"",
+         "operationId":"userLogin",
+         "produces":[
+           "application/json"
+         ],
+         "parameters":[
+           {
+             "name":"body",
+             "in":"body",
+             "description":"itemArray:{'email':0,\n'sms':0,\n'email':0,\n'password':0}",
+             "required":true,
+             "schema":{
+               "$ref":"#/definitions/login"
+             }
+           }
+         ],
+         "responses":{
+           "200":{
+             "description":"successful operation"
+           }
+         }
+       }
+    }
+  },
+  "definitions": {
+      "addCustomer":{
+        "type":"object",
+        "required":[
+          "email",
+          "code",
+          "name",
+          "password"
+        ],
+        "properties":{
+          "email":{
+            "type":"string"
+          },
+          "code":{
+            "type":"integer"
+          },
+          "name":{
+            "type":"string"
+          },
+          "password":{
+            "type":"integer"
+          },
+          "last_login_on":{
+            "type":"string",
+            "format":"date-time"
+          }
+        }
+      },
+      "login":{
+        "type":"object",
+        "required":[
+          "email",
+          "password"
+        ],
+        "properties":{
+          "email":{
+            "type":"string"
+          },
+          "password":{
+            "type":"integer"
+          }
+        }
+      }
+  }
+
+}

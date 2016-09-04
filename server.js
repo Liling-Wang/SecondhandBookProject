@@ -8,7 +8,7 @@ var login = require('./bl/login.js');
 var sms = require('./bl/Sms.js');
 var customer = require('./bl/Customer.js');
 var book = require('./bl/Book.js');
-
+var message = require('./bl/Message.js');
 
 function createServer(){
     var server = restify.createServer({
@@ -46,8 +46,8 @@ function createServer(){
     server.use(restify.gzipResponse());
 
     var STATIS_FILE_RE = /\.(css|js|jpe?g|png|gif|less|eot|svg|bmp|tiff|ttf|otf|woff|pdf|ico|json|wav|ogg|mp3?|xml)$/i;
-    server.get(/\/apidocs\/?.*/, restify.serveStatic({
-        directory: './public'
+    server.get(/\/apidoc\/?.*/, restify.serveStatic({
+        directory: './src/public'
     }));
     // server.get('/', function (req, res, next) {
     //  sysError.resNoAuthorizedError(null, res, next);
@@ -62,10 +62,10 @@ function createServer(){
     server.post({path:'/lilingw/api/user/do/login', contentType:'application/json'}, login.custLogin);
     server.post({path:'/lilingw/api/sms/:email/sign',contentType:'application/json'}, sms.sendSignInSms);
     server.post({path:'/lilingw/api/addCustomer',contentType:'application/json'}, customer.addCustomer);
-    console.log("in server");
     server.get('/lilingw/api/bookType',book.queryBookType);
     server.post({path:'/lilingw/api/bookType'},book.queryBookType);
-    console.log("in server",book);
+    server.post({path:'/lilingw/api/sendMessaage',contentType:'application/json'}, message.sendMessage);
+   
 
     server.on('NotFound', function (req, res, next) {
         console.log("not found error");

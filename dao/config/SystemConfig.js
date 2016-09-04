@@ -16,6 +16,12 @@ function getMysqlConnectOptions(){
     return mysqlConnectOptions;
 }
 
+var MessageQueueHost = {
+    host: "127.0.0.1",
+    port:8092
+}
+
 module.exports = {
-    getMysqlConnectOptions: getMysqlConnectOptions
+    getMysqlConnectOptions: getMysqlConnectOptions,
+    MessageQueueHost:MessageQueueHost
 }

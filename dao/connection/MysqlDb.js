@@ -13,8 +13,8 @@ var getConnection = function(callback){
 };
 
 var dbQuery = function (sql, values, callback) {
-    console.log("sql",sql);
-    console.log("values",values);
+  //  console.log("sql",sql);
+  //  console.log("values",values);
     pool.getConnection(function(conError, con){
         if(conError){
             console.log("Connect mysql error:");

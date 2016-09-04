@@ -9,3 +9,29 @@
     background-color: #ffffff;
     width:100%;
 }
+
+#right_col{
+    border:1px solid #eaecec;
+    background-color: #e1eef5;
+    padding-left:0px;
+    padding-right: 0px;
+    height: 40px;
+    border-bottom-color: #b7d2f3;
+    border-bottom-width: 5px;
+}
+#right_col_down{
+    height: 350px;
+    border:1px solid #eaecec;
+}
+
+#left_col{
+    border:1px solid #eaecec;
+    height: 40px;
+    border-bottom-color: #d6e1ef;
+    border-bottom-width: 5px;
+}
+
+#left_col_down{
+    height: 350px;
+    border:1px solid #eaecec;
+}

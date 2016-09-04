@@ -1,7 +1,7 @@
 {
   "name": "lilingfirstmodule",
   "version": "1.0.0",
-  "main": "main.js",
+  "main": "app.js",
   "dependencies": {
     "csvtojson": "*",
     "json2csv": "^3.4.2",
@@ -22,6 +22,7 @@
   },
   "devDependencies": {
     "grunt": "^0.4.5",
+    "grunt-apidoc": "^0.11.0",
     "grunt-replace": "*",
     "methods": "*",
     "mocha": "*",

@@ -1,0 +1,67 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "The documents for mission public sinotrans batch job",
+    "version": "1.0.0",
+    "title": "MP sinotrans batch api doc",
+    "contact": {
+      "email": "ling.xue@missionpublic.com"
+    },
+    "license": {
+      "name": "View source at github",
+      "url": "https://github.com/mpinc/sinotrans-batch"
+    }
+  },
+  "host": "localhost:8095",
+  "basePath": "/api",
+  "tags": [
+    {
+      "name": "csv",
+      "description": "download and upload csv files ",
+      "externalDocs": {
+        "description": "sinotrans batch",
+        "url": "http://localhost:8095"
+      }
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+
+    "/truckPriceUpload": {
+      "post": {
+        "tags": [
+          "csv"
+        ],
+        "summary": "uploads csv file",
+        "description": "csv file convert and add into mysql",
+        "operationId": "uploadCsvFile",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "csv",
+            "in": "formData",
+            "description": "file to upload",
+            "required": true,
+            "type": "file"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+
+  }
+
+}

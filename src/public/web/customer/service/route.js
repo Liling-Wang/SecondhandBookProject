@@ -22,6 +22,12 @@ app.config(['$routeProvider',function($routeProvider) {
         })
         .when('/postMessage',{
              templateUrl:'/public/web/customer/view/postMessage.html',
+             controller:'mainController'
+
+        })
+        .when('/poster',{
+            templateUrl:'/public/web/customer/view/poster.html',
+            controller:'mainController'
 
         })
         .otherwise({

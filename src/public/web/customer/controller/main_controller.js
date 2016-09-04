@@ -33,6 +33,22 @@ app.controller("mainController", ['$rootScope','$scope','$Ajax','$location','$aj
                 "textContent":$scope.text.content
             }
 
+            $Ajax.post("/sendMessaage",params).then(function (data) {
+                console.log("data...", data);
+
+                if(data.success){
+                    console.log("successful to send message ");
+                    console.log("data,,,,,,",data.rows[0].title);
+                    $rootScope.title = data.rows[0].title;
+                    $rootScope.content = data.rows[0].content;
+                    $rootScope.subject = data.rows[0].subject;
+                    window.location.href = "/main.html#/poster";
+                }else{
+                    console.log("unsuccessful to send message")
+                }
+                
+            })
+
             console.log("params", params);
 
         }
